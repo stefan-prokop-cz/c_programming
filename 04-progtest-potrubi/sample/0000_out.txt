@@ -1,0 +1,13 @@
+Delky trubek:
+Potrubi:
+Celkem: 0
+7 = 2 + 5
+7 = 2 + 2 + 3
+Celkem: 2
+3 = 3
+Celkem: 1
+9 = 9
+9 = 2 + 2 + 5
+9 = 3 + 3 + 3
+Celkem: 3
+Celkem: 0

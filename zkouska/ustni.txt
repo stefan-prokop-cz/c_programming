@@ -1,0 +1,254 @@
+1) Co je ADT množina(Set) a jak se liší od ADT seznam(List)?
+- abstraktni datovy typ mnozina - abstraktni datovy typ nam umoznuje ukladat / pracovat hodnoty s ruznymy datovymi typy, mnozina je jednim ze zakladnich ADT
+- mnozina obsahuje pouze data, ktera nejsou duplicitni, zatimco seznam muze obsahovat duplicitni data
+
+2) Co je Little endian, big endian a proč se tím máme v C zabývat?
+- little a big endian je zpusob ukladani dat (pr. cisel) do pameti
+- procesor vezme cislo a ma dva zpusoby, jak jej ulozit do pameti = na prvni pozici ulozi nejnizsi bit nebo nejvyssi bit
+- little endian uklada na prvni pozici nejnizsi bit (lepsi pro HW konverzi) - soucasne procesory (Intel, AMD, ARM)
+- big endian uklada na prvni pozici nejvyssi bit (lepsi cteni pro cloveka) - procesory Motorola
+- zabyvat bysme se jim meli v pripade cteni binarnich souboru, kde pracujeme s cisli (abychom spravne zobrazili data atp.)
+
+3) Co je medián a jak souvisí s pojmem pivot? Kde se používají a jak se dají určit?
+- median oznacuje stredni hodnotu, mejme napriklad cisla 7 12 3 -> medianem je cislo 7
+- s pojmem pivot souvisi v pripade quicksortu, kde je mozne jej vyuzit, zde se vyuziva pri razeni pole, kde se radi hodnoty pred a nasledne za pivotem (rychlejsi razeni)
+
+4) Co vyjadřuje asymptotická složitost algoritmu, proč bychom se jí měli zabývat?
+- asymptoticka slozitost vyjadruje, kolikrat se zavola dana funkce (cyklus) v zavislosti na vstupu (kolik se provede operaci / instrukci)
+- zabyvat bychom se s ni meli zejmena proto, ze chceme, aby nase programy byly co nejefektivnejsi
+
+5) Co je normalizace u interní reprezentace racionálních (float,double, long double) hodnot
+
+6) Jak je definována množina funkcí omikron O(f(n)) pro nějakou funkci f(n)?
+- Pro vsechna realna kladna C existuje prirozene n0 takove, ze pro vsechna n >= n0 plati: T(n) <= c*f(n)
+
+7) Jaké chyby mohou nastat při kopírování jednoho souboru do druhého a jak tyto chyby ošetříme?
+- soubory neexistuji - pokud je fopen NULL, zobrazim chybove hlaseni
+- neexistuje vystupni soubor - vytvorim jej
+- nemam dostatecna prava - znovu fopen NULL - zobrazim chybove hlaseni
+
+8) Jaké jsou typické operace pro ADT množina?
+- vypis vsech prvku, symetricka diference dvou mnozin, rozdil mnozin, prunik mnozin, sjednoceni mnozin, vlozeni prvku, odebrani prvku, zjisteni, zda je prvek v mnozine, doplnek mnoziny
+
+9) K čemu slouží Eratosthénovo síto a jak se používá?
+- pouziva se zejmena pro vyhledavani prvocisel
+- princip je takovy, ze si v danem napr. poli vezmu cislo a nasledne "odsekavam" jeho nasobky a mocniny, takto pokracuji tak dlouho, dokud mi zbydou pouze prvocisla, ktera nejsou jiz nicim v danem poli delitelna
+
+10) Navrhněte efektivní algoritmus, který určí množinovou symetrickou diferenci dvou polí reprezentující množiny čísel. Určete složitosti tohoto algoritmu (časovou, prostorovou, v nejlepším a nejhorším případě). Pomohlo by, kdyby byla pole seřazená? 
+- naleznu vsechny prvky z mnoziny A, ktere se nenachazeji v mnozine B a vsechny prvky z mnoziny B, ktere se nenachazeji v mnozine A
+- pr. A: {1, 2, 3}, B: {3, 4}, vysledek = {1, 2, 4}
+- pokud budou mnoziny neserazene mohla by slozitost byt n * m (s tim, ze do pomocneho pole bychom si mohli ulozit hodnoty z mnoziny B a nasledne pridat do vysledne mnoziny prvky zbyle, ktere se nenachazeji v mnozine A)
+- pokud budou mnoziny serazene mohlo by se jednat o slozitost n nebo m (zalezi na vetsi mnozine), protoze zde muzeme porovnavat primo na indexech a nemusime prochazet cele pole, pokud je prvek mensi nez z druhe mnoziny provede se operace dokud nebude znovu vetsi nebo roven) - v idealnim pripade je slozitost tedy n a v nejhorsim n * m
+
+11) Navrhněte efektivní algoritmus, který určí množinový rozdíl dvou polí reprezentující množiny čísel. Určete složitosti tohoto algoritmu (časovou, prostorovou, v nejlepším a nejhorším případě). Pomohlo by, kdyby byla pole seřazená?
+- jako predchozi pripad
+
+12) Navrhněte efektivní algoritmus, který určí průnik dvou polí reprezentující množiny čísel. Určete složitosti tohoto algoritmu (časovou, prostorovou, v nejlepším a nejhorším případě). Pomohlo by, kdyby byla pole seřazená?
+- jako predchozi pripady
+
+13) Navrhněte efektivní algoritmus, který určí sjednocení dvou polí reprezentující množiny čísel. Určete složitosti tohoto algoritmu (časovou, prostorovou, v nejlepším a nejhorším případě). Pomohlo by, kdyby byla pole seřazená?
+- jako predchozi pripady
+
+14) Popište algoritmus prohledávání uspořádaného binárního stromu - prefix, infix, postfix
+
+15) Porovnejte složitosti typických operací pro ADT množina při reprezentaci množiny pomocí zřetězeného seznamu a pomocí pole. Jak se změní složitosti pokud budeme obě struktury uvažovat seřazené?
+POLE
+- pokud budeme vkladat prvek a reallocovat hodne casto muzeme se dostat na slozitost n^2, pokud bychom vhodne reallocovali -> dostavame konstantni slozitost
+- musime si pamatovat velikost pole
+- pokud bude usporadane - dostaneme vetsi rychlost pri vyhledavani, ale pomalejsi pri vkladani a mazani prvku (musime pole udrzovat serazene)
+SEZNAM
+- efektivni vyuziti mnozinovych operaci
+- jinak vesmes stejne jako pole
+
+16) Proč se zabýváme algoritmy řazení? Jakou složitost tyto algoritmy mají?
+- pro nektere (mozna vetsinu) operaci s poli / mnozinou / strukturami je vhodne mit pole serazene - pro vetsi mnozstvi dat - dosahneme rychlejsich provedeni danych operaci (napriklad pro vyhledavani atp.)
+- slozitosti jsou vetsinou logaritmicke - vetsinou n * log(n) a v nejhorsim pripade jsou n^2
+
+17) Telefonní seznam bylo nutné aktualizovat, protože pět uživatelek se provdalo a změnily si příjmení. Navrhněte algoritmus, který efektivně aktualizuje telefonní seznam tak, aby pole zůstalo seřazené. Určete složitosti tohoto algoritmu (časovou, prostorovou, v nejlepším a nejhorším případě)
+- zalezi odkud zeny jsou - napriklad pro ceska prijmeni nejsou znaky v abecede rozsirene rovnomerne (prijmeni na P je vice nez na X)
+- bylo by vhodne zjistit, zda je prijmeni z druhe pulky abecedy a jit od konce nebo opacne
+- taktez pro nove prijmeni
+-> slozitost je 2 * n v nejhorsim pripade a v nejlepsim n * log(n)
+
+18) Určete nejlepší a nejhorší složitost algoritmu řazení quick sort a algoritmus popište
+- nejhorsi: n^2 a nejlepsi n * log(n)
+- radi pomoci medianu - pivot, podle nej se radi prvky pole, mensi na zacatek a vetsi na konec, nejdrive seradi prvky pred pivotem a nasledne prvky za pivotem
+
+19) Určete nejlepší a nejhorší složitost algoritmu řazení slučováním (merge sort) a algoritmus popište
+- v nejlepsim i nejhorsim pripade je n * og(n)
+- vyuziva opakovaneho slucovani serazenych podposloupnosti, ktere uklada do vysledneho pole
+
+20) Určete nejlepší a nejhorší složitost algoritmu řazení vkládáním (insert sort) a algoritmus popište
+- v nejlepsim pripade je slozitost n a v nejhorsim je n^2
+- na zacatku seradi pouze prvni prvek a nasledne ze zybtku neserazeneho pole vklada dalsi hodnoty porovnavanim
+
+21) Určete nejlepší a nejhorší složitost algoritmu řazení výběrem (select sort) a algoritmus popište
+- v nejlepsim i nejhorsim pripade je slozitost n^2
+- opakovane vyhledava nejmensi prvek - najde globalni minimum a tento prvek prohodi s prvnim prvkem pole, nasledne pokracuje s polem o poctu prvku - 1
+
+22) Určete nejlepší a nejhorší složitost algoritmu řazení zaměňováním (bubble sort) a algoritmus popište
+- v nejlepsim pripade je slozitost n a v nejhorsim je n^2
+- postupne porovnava sousedni prvky a pokud nejsou v pozadovane relaci, tak je vymeni - po prvnim pruchodu se nejvetsi hodnota dostane na posledni pozici pole
+
+23) Vysvětlete pojem skrytý bit u interní reprezentace racionálních (float,double, long double) hodnot
+
+24) Co je a k čemu slouží abstraktní datový typ?
+- abstraktni datovy typ je reprezentovan jako struktura - slouzi k uchovavani a pracovani s daty, ktere maji ruzny datovy typ (najednou)
+
+25) Co je a k čemu slouží binární strom?
+- jsou struktury, ktere maji jeden koren a kazdy vrchol krome korene ma prave jednoho predka a ma maximalne dva nasledniky
+- komprese dat, sifrovani (morseova abeceda), vyhledavani (binarni vyhledavaci strom)
+
+26) Co je EOF a k čemu lze použít?
+- End of File - oznacuje konec vstupu - kdyz cteme ze souboru a jsme na jeho konci, pak je vracena hodnota EOF, pomoci ktere programator pozna, ze je na konci
+
+27) Co je lineární spojová struktura? Ukažte její vytvoření pro hodnoty typu int.
+- struktura, ktera obsahuje data a odkaz na dalsi prvek
+- typedef struct list { int data; struct list *next; }TList;
+
+28) Co je makro v C jak funguje? Uveďte příklad.
+- fragment kodu, jez je mozne pouzit v programu - jeho jmeno bude nahrazeno hodnotou makra
+- #define MAX 255
+
+29) Co je podmíněný překlad v C? Uveďte příklad
+- podmineny preklad vybranych casti zdrojoveho kodu, muzeme testovat, na jakem se nachazime OS a podle toho pridat danou knihovnu (pri Win / Unix)
+- #ifdef __WINDOWS__ #include <windows.h> #endif
+
+30) Co je rekurze a jak byste s její pomocí řešili problém Hanojských věží?
+- je funkce, ktera v prubehu sve prace vola sama sebe
+- jestli je n > 1, pak pak rekurzivnim volanim presuneme n - 1 kotoucu z pocatecni veze na odkladaci (az na nejvetsi), dale prsuneme nejvetsi kotouc z pocatecni na cilovou pozici, je-li n > 1, pak rekurzi presuneme n - 1 kotoucu z odkladaci na cilovou vez
+
+31) Co je sekvenční přístup k souboru? Jaký by mohl být jiný a jak se liší?
+- data postupne cteme
+- dalsim zpusobem muze byt primy pristup - pristupujeme k datum nahodne / k casti souboru v libovolnem poradi, dle potreby
+
+32) Co je sestavovač (linker) jazyka C a k čemu slouží.
+- linker predstavuje program, ktery z naseho programu vytvori vysledny program, ktery bude mozne spustit - vysledny celek (vsechny podprogramy, knihovny, doplni odkazy na funkce atp.)
+
+33) Co je to doplňkový kód a jak reprezentuje desetinné číslo 2.5 a jak -0.5?
+- doplnkovy kod je reprezentace cisel, ktera je vhodna pro stroj, narozdil od primeho kodu
+- v nejvyssim bitu je jednicka (pokud je zaporny) nebo 0 pokud je cislo kladne
+- postup prevodu - desitkove cislo prevedeme na binarni, nasledne invertujeme a pricteme jednicku, opacny postup: mam binarni cislo, invertuju, prictu jednicku a dostavam dekadicke cislo
+- 2.5 = 10.01 a -0.5 = 0.01 -> 1.10 -> 1.11
+
+34) Co je v C enum? Uveďte příklad.
+- jedna se o vyctovy typ - dostavame vlastni datovy typ, ktery muzeme pouzit v programu
+- typedef enum { CERVENA, ZELENA }barvy;
+
+35) Co je v C union a k čemu slouží. Uveďte příklad.
+- muzeme si jej predstavit jako jednoduchou strukturu, s tim rozdilem, ze jeji prvky sdileji jeden pametovy prstor tzn. prekryvaji se, alokuje se pouze misto nejvetsiho prvku - po prirazeni se pracuje pouze s prvkem, kteremu byla data prirazena, az do doby dalsiho prirazeni
+- typedef union { char c; double d; int i; }un;
+
+36) Jak pro zadaný cyklus určím podmínky, které zaručí, že skončí?
+
+37) Jaká bude hodnota v proměnné a po provedení int a = 3; a^= 1?
+- a = 10 -> 2
+
+38) Jaké operace jsou v C povoleny s ukazateli a jaký mají význam?
+- pricitani (posun o n-nasobek delky, T* + int), odecitani (posun o n-nasobek, T* - int, pocet typu, ktere lze ulozit mezi adresy, T* - T*), mensi nez - zjisti, zda prvni ukazatel ukazuje v pameti pred druhy (T* < T*)
+
+39) Jaký je rozdíl mezi interpretovanými a kompilovanými programovacími jazyky. Uveďte příklady těchto jazyků.
+- interpretovane jazyky nevytvareji spustitelny soubor, ale maji interpret, ktery umi program "zobrazit"
+- kompilovane jazyky vytvareji spustitelny soubor
+
+40) Jaký je rozdíl mezi syntaxí a sémantikou v programovacím jazyce.
+- syntaxe se zabyva spravnosti v danem jazyce (zda se tvori spravne zapisy)
+- semantika definuje pro kazdou syntakticky spravnou vetu jazyka jeho vyznam
+
+41) Jakým způsobem měříme efektivitu algoritmu?
+- efektivitu algoritmu muzeme zmerit tim, jak se bude chovat pro velke hodnoty, mnoho dat atp.
+- asymptoticka a casova slozitost + prostorova slozitost
+
+42) Mějme pole celých čísel. Popište algoritmus určení nejčastějšího prvku. Určete složitosti tohoto algoritmu (časovou, prostorovou, v nejlepším a nejhorším případě). Pomohlo by, kdyby pole bylo seřazené?
+- v nejhorsim pripade n^2, v serazenem poli by se take jednalo o n^2
+
+43) Mějme pole celých čísel. Popište algoritmus určení nejméně častého prvku. Určete složitosti tohoto algoritmu (časovou, prostorovou, v nejlepším a nejhorším případě). Pomohlo by, kdyby pole bylo seřazené?
+- v nejlepsim pripade n a v nejhorsim pripade n^2
+
+44) Napište funkci, která pro zadané celé číslo vypíše jeho rozklad na prvočinitele.
+
+45) Popište implementaci fronty spojovým seznamem. Jak byste omezili délku?
+- FIFO
+- urcil bych si jakysi index, ktery by udaval maximalni velikost a ve druhem indexu bych si pamatoval, kolik prvku jiz ve fronte je
+
+46) Popište implementaci zásobníku spojovým seznamem. Jak byste omezili hloubku?
+- LIFO
+- stejne jako predchozi
+
+47) Popište podmínky použití binárního vyhledávání a určete jeho složitost.
+- slozitost je log(n)
+- hledani pulenim v serazenem poli (vzestupne)
+
+48) Předpokládejme 32 bitový int. Co se provede při přiřazení int a = 1000000000000000L a co při int b = 1E20?
+- L -> hodnota je prilis velka pro datovy typ int - pretece
+- 1E20 -> vypise se nejvetsi hodnota int 2mld
+
+49) Co dělá funkce free? Jaké má parametry?
+- uvolnuje alokovanou pamet, parametrem je odkaz (ukazatel) na alokovane pole / hodnotu
+
+50) Co je Fibonacciho posloupnost?
+- posloupnost definovana vztahem: n == 0 F(0) = 0, n == 1 F(1) = 1, jinak F(n) = F(n-2)+F(n-1)
+
+51) Co je NULL v C?
+- oznaceni pro zadnou hodnotu (nic)
+
+52) Co je předpřekladač (preprocessor) jazyka C a k čemu slouží.
+- specialni program pro zpracovani maker a symbolickych konstant
+- slouzi napr. k podminenemu prekladu, musi vedet jak vypada deklarace funkce
+
+53) Co je překladač (compiler) jazyka C a k čemu slouží.
+- program, ktery vezme nas zdrojovy kod a prelozi jej do strojoveho kodu
+
+54) Co je soubor v C a jaký je rozdíl mezi textovým a binárním souborem?
+- u textoveho souboru jsou znamy jednotlive znaky, zatimco u binarniho souboru musime my, jako programatori, vedet, co se na dane casti nachazi (cislo double, int atp.)
+
+55) Co je to doplňkový kód a jak reprezentuje číslo 5 a jak -5?
+- 5 = 101, -5 -> 101 -> 010 -> 011
+
+56) Co se stane pokud budeme v proměnnou typu double zvyšovat o jedničku?
+- zracime presnost - nepricte se "cista" 1
+
+57) Co se stane pokud budeme v proměnnou typu int opakovaně zvyšovat o jedničku?
+- po prekroceni hranice 2mld pretece
+
+58) Co se v C stane pokud do neznaménkového int vložím v 32 bitovém prostředí číslo 0xFFFFFFFF? Co se vypíše při použití konverze %d a co při %u?
+- %d = -1, %u = 4mld - rozsah unsigned int
+
+59) Co se v C stane pokud do znaménkového int vložím v 32 bitovém prostředí číslo 0xFFFFFFFF? Co se vypíše při použití konverze %d a co při %u?
+- %d = -1, %u = -1
+
+60) Dynamicky alokujte pole pro dvacet prvků typu int.
+- int * a = (int *) malloc (20 * sizeof(*a));
+
+61) Jak implementovat frontu konečné délky polem?
+- FIFO
+- podobne jako u spoj. seznamu
+
+62) Jak implementovat zásobník konečné hloubky polem?
+- LIFO
+- podobne jako u spoj. seznamu
+
+63) Jak se liší přiřazení mezi dvěma proměnnými typu pole a mezi dvěma proměnnými typu struktura?
+- u pole vkladam na dany index a u struktury se odkazuji pomoci ukazatele
+
+64) Jaká bude hodnota 100000000000L + 12E100? Jakého typu a proč?
+- nejspise typu double - nejvetsi prostor pro ulozeni cisla
+
+65) Jaká bude hodnota v proměnné a po provedení int a = 3; a&&= 1?
+- nezkompiluje se, a = 3, &&= neni platny operator
+
+66) Jaká bude hodnota v proměnné a po provedení int a = 3; a&= 10?
+- a = 2
+
+67) Jaká bude hodnota v proměnné a po provedení int a = 3; a«=2?
+- a = 12
+
+68) Jaká bude hodnota v proměnné a po provedení int a = 3; a»=2?
+- a = 0
+
+69) Jaká hodnota bude 4.7 - 4.7F a proč?
+- 0
+
+70) Napište funkci, která vrátí součet absolutních hodnot obou jejích celočíselných argumentů.
+
+

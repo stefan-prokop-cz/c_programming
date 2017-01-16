@@ -1,0 +1,28 @@
+Úkolem je vytvořit program, který bude zpracovávat data z identifikace letadel.
+
+Moderní letadla jsou vybavena automatickým systémem, který vysílá základní informace o letu (identifikace, rychlost, ...). Tyto informace mají nějakou konečnou velikost a jsou vysílané stále dokola. Z důvodů redundance jsou tato data vysílána nezávisle na různých frekvencích.
+
+Předpokládáme, že máme přijímače, které dokáží toto vysílání zachytit. Každý přijímač zpracovává data na jedné frekvenci a přijímá identifikaci z právě jednoho letadla. Přijímač přijímá identifikační data postupně, po přijetí dostatečně velké části dat tato předá našemu programu ke zpracování. Toto se opakuje vícekrát, dokud není zpracovaná celá perioda vysílání daného letadla. Tedy pokud je identifikace letadla 5, 12, 9, 8, 64, 93, může přijímač dodat identifikaci např. ve 3 částech:
+
+5, 12
+9, 8, 64
+93
+
+nebo rozdělenou jakkoliv jinak. Je ale garantováno, že přijímač nakonec dodá celou jednu zprávu identifikace letadla.
+
+Náš program takto dostává identifikační data z jednotlivých přijímačů, získané části dat (podle čísla přijímače) sestaví a porovná s ostatními. Jeho úkolem je identifikovat duplicity, tedy identifikovat, které přijímače přijímají zprávy ze stejného letadla.
+
+Situaci komplikuje skutečnost, že přijímače nemusejí být synchronizované. Pokud dané letadlo vysílá identifikaci např: 5, 12, 9, 8, 64, 93, může ji jeden přijímač zachytit v podobě: 5, 12, 9, 8, 64, 93, přijímač pracující na jiné frekvenci ale může dostat zprávu posunutou: 9, 8, 64, 93, 5, 12. Tyto dvě zprávy ale považujeme za identické.
+
+Vstupem programu jsou části zpráv tak, jak jsou zasílané z jednotlivých přijímačů. Každá část je uvozena identifikací přijímače a v hranatých závorkách pak obsahuje data (celá čísla) obsahu identifikační zprávy. Zadávání vstupních dat končí po dosažení konce vstupu (EOF).
+
+Výstupem programu je identifikace duplicit. Na jedné řádce výstupu je seznam přijímačů, které přijímají identifikaci od stejného letadla.
+
+Pokud je vstup neplatný, program to musí detekovat a zobrazit chybové hlášení. Chybové hlášení zobrazujte na standardní výstup (ne na chybový výstup). Za chybu považujte:
+    1. identifikace přijímače není celé číslo nebo je záporná,
+    2. data zprávy nejsou celá čísla,
+    3. chybí dvojtečka za identifikací přijímače, hranaté závorky, data identifikace nebo oddělující čárky.
+
+Před implementací programu si rozmyslete, jakým způsobem budete reprezentovat jednotlivé přijímané zprávy. Počet přijímačů může být velmi vysoký. Identifikace přijímačů mohou být velmi vysoká čísla. Délka identifikace letadla není omezena. Statická alokace nebude fungovat - pokud nastavíte velikosti příliš malé, budete mít problém s objemem dat. Pokud byste velikosti nastavili velkoryse, neprojdete limitem využití paměti v základním testu. Paměťové nároky Vašeho řešení musí rozumně korelovat s velikostí řešeného problému.
+
+Vyhledávání duplicit může trvat velmi dlouho. Dalším časově náročným problémem je identifikace duplicit, které jsou posunuté. Časové limity jsou nastavené tak, že rozumně implementovaný základní algoritmus projde všemi testy kromě testů bonusových. Bonusové testy vyžadují pokročilé algoritmy porovnávání a předzpracování zpráv před jejich porovnáním.

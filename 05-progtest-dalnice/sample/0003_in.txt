@@ -1,0 +1,2 @@
+construct [10, 20, 30]
+load  0 abcd

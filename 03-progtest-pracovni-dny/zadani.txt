@@ -1,0 +1,16 @@
+Úkolem je realizovat dvě funkce (ne celý program, pouze dvě funkce), které budou usnadňovat výpočty pracovních dní v zadaném intervalu dat. Požadované funkce mají následující rozhraní:
+
+int IsWorkDay ( int y, int m, int d )
+    Funkce rozhodne, zda je zadaný den pracovní nebo ne. Parametry jsou rok, měsíc a den, který má být ověřen. Návratovou hodnotou je celé číslo 1, pokud je zadaný den pracovní, nebo hodnota 0, pokud je zadaný den volný (sobota, neděle, svátek) nebo bylo zadané neplatné datum.
+int CountWorkDays ( int y1, int m1, int d1, int y2, int m2, int d2, int * cnt )
+    Funkce vypočte počet pracovních dní v zadaném intervalu. Interval je zadaný rokem, měsícem a dnem počátku (y1, m1, d1) a konce (y2, m2, d2). Interval považujeme za uzavřený, tedy do výpočtu zahrnujeme oba hraniční dny. Návratovou hodnotou funkce je indikace úspěchu (hodnota 1) nebo neúspěchu (hodnota 0). Neúspěch bude funkce hlásit, pokud dostane neplatný časový interval (viz níže). Pokud funkce uspěje, umístí do výstupního parametru cnt počet nalezených pracovních dnů.
+
+Správné hodnoty vstupních parametrů musí splňovat:
+    1. rok je větší roven 2000 (všechna data před rokem 2000 považujeme za neplatná),
+    2. měsíc je platný (1 až 12),
+    3. den je platný (1 až počet dní v měsíci),
+    4. ve funkci CountWorkDays je datum počátku intervalu ≤ datum konce intervalu.
+
+Odevzdávejte zdrojový soubor, který obsahuje implementaci požadovaných funkcí IsWorkDay a CountWorkDays. Do zdrojového souboru přidejte i další Vaše podpůrné funkce, které jsou z nich volané. Funkce budou volané z testovacího prostředí, je proto důležité přesně dodržet zadané rozhraní funkce. Za základ pro implementaci použijte kód z přiloženého souboru. V kódu chybí vyplnit těla požadovaných funkcí (a případné další podpůrné funkce). Ukázka obsahuje testovací funkci main, uvedené hodnoty jsou použité při základním testu. Všimněte si, že vkládání hlavičkových souborů a funkce main jsou zabalené v bloku podmíněného překladu (#ifdef/#endif). Prosím, ponechte bloky podmíněného překladu i v odevzdávaném zdrojovém souboru. Podmíněný překlad Vám zjednoduší práci. Při kompilaci na Vašem počítači můžete program normálně spouštět a testovat. Při kompilaci na Progtestu funkce main a vkládání hlavičkových souborů "zmizí", tedy nebude kolidovat s hlavičkovými soubory a funkcí main testovacího prostředí.
+
+Váš program bude spouštěn v omezeném testovacím prostředí. Je omezen dobou běhu (limit je vidět v logu referenčního řešení) a dále je omezena i velikost dostupné paměti. Časové limity jsou nastavené tak, aby rozumná implementace naivního algoritmu prošla všemi testy kromě testů bonusových, tedy byla hodnocena 100% bodů. Bonusové testy vyžadují časově efektivní výpočet i pro velké intervaly (vysoké roky hodně převyšující 4000).

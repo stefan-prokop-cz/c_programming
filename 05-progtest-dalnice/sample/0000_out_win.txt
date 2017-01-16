@@ -1,0 +1,7 @@
+Prikazy:
+Maximalni naklad: 10
+Maximalni naklad: 30
+Maximalni naklad: 30
+Maximalni naklad: 100
+Maximalni naklad: 30
+Maximalni naklad: 10

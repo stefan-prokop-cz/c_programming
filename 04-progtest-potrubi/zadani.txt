@@ -1,0 +1,20 @@
+Úkolem je vytvořit program, který dokáže skládat potrubí zadané délky z prefabrikátů.
+
+Výrobní program zahrnuje trubky různé délky. Tyto délky jsou předané našemu programu. Dále program dostane seznam požadovaných délek potrubí, které má být z trubek sestaveno. Potrubí lze skládat nejvýše ze 3 kusů trubek. Program vypíše všechny kombinace, kterými lze potrubí zadané délky sestavit. Ve výpisu ale bude každá kombinace unikátní, tedy například kombinaci 1+2+3 považujeme za stejnou jako kombinaci 3+1+2.
+
+Vstupem programu je:
+
+    délka jednotlivých vyráběných trubek. Délka trubky je celé kladné číslo. Zadávání délek trubek končí zadáním čísla 0. Výrobní program obsahuje 1 až 2000 různých délek trubek,
+    seznam dotazů, každý dotaz je celé číslo udávající délku požadovaného potrubí. Zadávání dotazů končí s koncem vstupu (EOF).
+
+Výstupem programu je vyřešení dotazů. Za každým dotazem bude vypsaný seznam, jak lze vyráběné trubky seskládat, aby vzniklo potrubí požadované délky. Na konci seznamu bude vypsaný celkový možný počet možností.
+
+Pokud je vstup neplatný, program to musí detekovat a zobrazit chybové hlášení. Chybové hlášení zobrazujte na standardní výstup (ne na chybový výstup). Za chybu považujte:
+    1. délky trubek nejsou celá kladná čísla,
+    2. výrobní program obsahuje méně než 1 / více než 2000 druhů trubek,
+    3. duplicity v délkách vyráběných trubek,
+    4. délka potrubí není správně zadaná, je záporná nebo nulová.
+
+Před implementací programu si rozmyslete, jakým způsobem budete reprezentovat délky trubek a jak budete vyhledávat, abyste předešli duplicitám ve výstupu. Výrobní program je omezen na nejvýše 2000 druhů trubek, pro řešení tedy postačuje staticky alokovaná paměť.
+
+Vyhledávání v délkách trubek může trvat velmi dlouho. Naivní řešení má složitost n3, vylepšováním algoritmu se dá složitost snížit. Časové limity testovacího prostředí jsou nastavené tak, aby rozumná implementace naivního algoritmu prošla všemi testy mimo testu bonusového.
